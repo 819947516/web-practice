@@ -1,0 +1,50 @@
+/*通用*/
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Microsoft yahei",sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+input {
+    border: none;
+    -webkit-appearance: none;
+}
+a {
+    text-decoration: none;
+}
+ol,ul {
+    list-style: none;
+}
+.f_l {
+    float: left;
+}
+.f_r {
+    float: right;
+}
+.clearfix::before,
+.clearfix::after {
+    content: '';
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.b_l{
+    border-left: 1px solid #ccc;
+}
+.b_r{
+    border-right: 1px solid #ccc;
+}
+.b_t{
+    border-top: 1px solid #ccc;
+}
+.b_b{
+    border-bottom: 1px solid #ccc;
+}

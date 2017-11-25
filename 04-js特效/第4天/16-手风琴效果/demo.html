@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{list-style: none}
+        *{margin:0; padding:0;}
+        div{
+            width: 1150px;
+            height: 400px;
+            margin:50px auto;
+            border:1px solid red;
+            overflow: hidden;
+
+        }
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;
+            /*background: url("images/1.jpg") no-repeat;*/
+        }
+        div ul {
+            width: 1300px;
+        }
+    </style>
+    <script src="../jquery1.0.0.1.js"></script>
+    <script>
+        window.onload = function () {
+            var div = document.getElementsByTagName("div")[0];
+            var liArr = document.getElementsByTagName("li");
+            for (var i=0;i<liArr.length;i++){
+                liArr[i].style.background = "url('images/"+(i+1)+".jpg') no-repeat";
+                liArr[i].onmouseover = function () {
+                    for (var j=0;j<liArr.length;j++){
+                        animate(liArr[j],{"width":100})
+                    }
+                    animate(this,{"width":800})
+                }
+            }
+//            for(var i=0;i<liArr.length;i++){
+//                liArr[i].onmouseout = function () {
+//                    for(var j=0;j<liArr.length;j++){
+//                        //引用框架实现宽度变窄
+//                        animate(liArr[j],{"width":240});
+//                    }
+//                }
+//            }
+            div.onmouseout = function () {
+                for(var j=0;j<liArr.length;j++){
+                    //引用框架实现宽度变窄
+                    animate(liArr[j],{"width":240});
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

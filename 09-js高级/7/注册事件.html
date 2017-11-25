@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var div = document.getElementsByTagName("div")[0];
+
+            div.onclick = function () {
+
+            };
+            div.addEventListener("click",function () {
+
+            });
+            div.attachEvent("onclick",function () {
+
+            });
+            function registeEvent() {
+                if (div.addEventListener){
+                    div.addEventListener("click",function () {
+
+                    });
+                }else if (div.attachEvent){
+                    div.attachEvent("onclick",function () {
+
+                    });
+                }else {
+                    div.onclick = function () {
+
+                    };
+                }
+            }
+            //封装
+            function registeEvent(target,type,handler) {
+                if (target.addEventListener){
+                    target.addEventListener(type,handler);
+                }else if (target.attachEvent){
+                    target.attachEvent("on"+type,handler);
+                }else {
+                    target["on"+type] = handler;
+                }
+            }
+            //因为每次注册事件都会重复判断 对以上再次改进 闭包返回函数判断一次就好；
+
+//            function registeEvent(target,type,handler) {
+//                if (target.addEventListener){
+//                   return target.addEventListener(type,handler);
+//                }else if (target.attachEvent){
+//                    return target.attachEvent("on"+type,handler);
+//                }else {
+//                    return target["on"+type] = handler;
+//                }
+//            }
+            function registeEvent() {
+                if (window.addEventListener){
+                    return function (target,type,handler) {
+                        target.addEventListener(type,handler);
+                    }
+                }else if (window.attachEvent){
+                    return function (target,type,handler) {
+                        target.attachEvent("on"+type,handler);
+                    }
+                }else {
+                    return function (target,type,handler) {
+                        target["on"+type] = handler;
+                    }
+                }
+            }
+            var creatEvent = registeEvent();
+            //以后每次就可以只用creatEvent函数调用了；
+            //但是attachEvent函数指向存在问题 他不是指向调用者所以再次改进
+            function registeEvent() {
+                if (window.addEventListener){
+                    return function (target,type,handler) {
+                        target.addEventListener(type,handler);
+                    }
+                }else if (window.attachEvent){
+                    return function (target,type,handler) {
+                        target.attachEvent("on"+type,function () {
+                            handler.call(target,window.event);
+                        });
+                    }
+                }else {
+                    return function (target,type,handler) {
+                        target["on"+type] = handler;
+                    }
+                }
+            }
+            var creatEvent = registeEvent();
+        }
+    </script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

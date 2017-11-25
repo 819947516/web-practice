@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background: url("image/1.jpg");
+            margin: 0px;
+            padding: 0px;
+        }
+        .box {
+            height: 225px;
+            text-align: center;
+            padding-top: 75px;
+            background: rgba(255,255,255,0.3);
+        }
+        img {
+            width: 200px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="image/1.jpg">
+        <img src="image/2.jpg">
+        <img src="image/3.jpg">
+        <img src="image/4.jpg">
+        <img src="image/5.jpg">
+    </div>
+    <script>
+        var box = document.getElementsByClassName("box")[0];
+        var body = document.body;
+        var img = box.children;
+        for (var i=0;i<img.length;i++){
+            img[i].index = i
+            img[i].onclick = function () {
+//                body.style.backgroundImage = "url("+this.src+")"
+                body.style.backgroundImage = "url(image/"+(this.index+1)+".jpg)";
+            }
+        }
+    </script>
+</body>
+</html>

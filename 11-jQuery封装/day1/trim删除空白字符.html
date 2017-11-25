@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = "  asaasasaa  ";
+    console.log(str);
+    console.log(str.trim());
+//    兼容写法
+
+    function trim2(str) {
+        if (str.trim){
+            return str.trim();
+        }else {
+            return str.replace(/^\s+|\s+$/g,"");
+        }
+    }
+    var a = "  asasa  ";
+    console.log(a);
+    console.log(trim2(a));
+    console.log(a.replace(/^\s+|\s+$/g, ""));
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: #42f6ff;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+           $("button").eq(0).click(function () {
+//               $("div").fadeIn()
+//               $("div").fadeIn(2000)
+//               $("div").fadeIn("fast")
+               $("div").fadeIn(2000,function () {
+                   alert(1);
+               })
+           });
+            $("button").eq(1).click(function () {
+                $("div").fadeOut()
+            });
+            $("button").eq(2).click(function () {
+                $("div").fadeToggle()
+            });
+            $("button").eq(3).click(function () {
+                $("div").fadeTo(500,0.3,function () {
+                    alert(2);
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>淡入</button>
+    <button>淡出</button>
+    <button>切换</button>
+    <button>改变到0.3</button>
+    <div></div>
+</body>
+</html>

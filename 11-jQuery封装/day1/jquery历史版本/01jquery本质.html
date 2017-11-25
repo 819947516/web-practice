@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-2.2.0.js"></script>
+</head>
+<body>
+<script>
+    /*
+     * jquery对外暴露了两个方法：jQuery和$,
+     * 这两方法实际上是同一个方法，
+     * 通过调用这两个方法，可以得到一个jQuery实例对象。
+     *
+     * jQuery实例对象是一个伪数组对象。
+     *
+     * jQuery和$实际上是一个工厂函数。
+     * */
+    var $div = $("<div></div>");
+    var jQuerydiv = jQuery("<div></div>");
+    var arr = [1,1,2,3];
+    console.log(({}).toString.call($div));
+    console.log(({}).toString.call(arr));
+</script>
+</body>
+</html>

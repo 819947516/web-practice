@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*main部分star*/
+    .main-slider {
+        margin-left: 220px;
+        position: relative;
+    }
+    .main-slider .a1{
+        display: block;
+        height: 340px;
+        width: 790px;
+    }
+    .main-slider ul {
+        position: absolute;
+        left: 50%;
+        bottom: 160px;
+        margin-left: -68px ;
+    }
+    .main-slider li {
+        float: left;
+        width: 18px;
+        height: 18px;
+        border-radius: 9px;
+        background-color: red;
+        text-align: center;
+        line-height: 18px;
+        margin: 0 2px;
+        color: #fff;
+
+    }
+     .main-slider .current {
+         background-color: purple;
+         cursor: pointer;
+    }
+    .main-slider .a2 {
+        display: block;
+        margin-top: 9px;
+        width: 790px;
+    }
+    .main-news-top {
+        width: 190px;
+        height: 209px;
+        border: 1px solid #000;
+        float: right;
+    }
+
+/*main部分end*/

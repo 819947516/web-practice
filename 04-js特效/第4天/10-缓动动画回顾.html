@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: deeppink;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName("button");
+            var box = document.getElementsByTagName("div")[0];
+            btn[0].onclick = function () {
+                animate(box,200)
+            }
+            btn[1].onclick = function () {
+                animate(box,400)
+            }
+            function animate(ele,target) {
+                clearInterval(ele.timer);
+                ele.timer = setInterval(function () {
+                    var step = (target-ele.offsetLeft)/10;
+                    step = step>0?Math.ceil(step):Math.floor(step);
+                    ele.style.left = ele.offsetLeft + step + "px";
+                    console.log(1);
+                    if (Math.abs(step)>= Math.abs(target-ele.offsetLeft)){
+                        ele.style.left = target + "px";
+                        clearInterval(ele.timer);
+                    }
+                },30)
+            }
+        }
+    </script>
+</head>
+<body>
+    <button>运动到200</button>
+    <button>运动到400</button>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    jQuery 2.0版本
+//    (function (w,factory) {
+//        console.log("对模块化进行支持");
+//        factory();
+//    }(window,function () {
+//        return jQuery;
+//    }));
+    
+    //我们沿用1.7版本
+    (function (w) {
+        function jQuery() {
+            return jQuery.fn.init();
+            //jQuery工厂函数
+        }
+        jQuery.fn = jQuery.prototype = {
+
+        };
+        var init = jQuery.fn.init = function () {
+            //真正的构造函数；
+        };
+        init.prototype = jQuery.fn;
+
+        w.jQuery = w.$ = jQuery;
+
+    })(window);
+    
+</script>
+</body>
+</html>

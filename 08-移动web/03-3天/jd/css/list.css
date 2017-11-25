@@ -1,0 +1,113 @@
+/*顶部搜索栏*/
+.list_container {
+    width: 100%;
+}
+.header {
+    width: 100%;
+    height: 45px;
+    background-image: url("../images/header-bg.png");
+    background-size: 1px 44px ;
+    background-repeat: repeat-x;
+    position: relative;
+    padding: 0 40px;
+}
+.header a:nth-child(1) {
+    color: gray;
+    font-size: 35px;
+    line-height: 45px;
+    font-family: SimSun;
+    position: absolute;
+    left: 10px;
+}
+.header input:nth-child(2) {
+    width: 100%;
+    height: 30px;
+    line-height: 31px;
+    border-radius: 5px;
+    margin-top: 7px;
+    border: 1px solid #eee;
+}
+.header a:nth-child(3) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 44px;
+    background: url("../images/sprites.png") -60px 0 /200px 200px no-repeat;
+    padding: 10px 12px;
+    /*background-size: 200px 200px;*/
+    background-origin: content-box;
+    background-clip: content-box;
+}
+/*内容区域*/
+/*左边*/
+.main {
+    width: 100%;
+}
+.main .main_left {
+    width: 90px;
+}
+.main .main_left ul{
+    width: 100%;
+}
+.main .main_left ul li {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+.main .main_left ul li a{
+    color: #000;
+}
+.main .main_left ul li.current {
+    border-right: none;
+}
+.main .main_left ul li.current a {
+    color: red;
+}
+/*右边*/
+.main .main_right {
+    overflow: hidden;
+    padding: 10px 10px 0;
+
+}
+.main .main_right>a{
+    display: block;
+    width: 100%;
+}
+.main .main_right>a img{
+    display: block;
+    width: 100%;
+}
+.main .main_right h3{
+    margin-top: 10px;
+    font-size: 12px;
+}
+.main .main_right ul{
+    width: 100%;
+    margin-top: 10px;
+}
+.main .main_right ul li{
+    float: left;
+    width: 33.3333%;
+}
+.main .main_right ul li a {
+    width: 100%;
+    display: block;
+}
+.main .main_right ul li a p {
+    text-align: center;
+    color: #000;
+    font-size: 14px;
+    padding: 4px 0;
+}
+.main .main_right ul li a img {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+}
+
+
+

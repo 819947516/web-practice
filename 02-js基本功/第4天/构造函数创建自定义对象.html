@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Student(name) {
+        this.name = name;
+        this.sayHi = "hello,world!";
+        console.log(this.name+"说"+this.sayHi);
+//        return Student;不须返回，用new调用时 new的属性自动返回。
+    }
+    var stu1 = new Student("李四");
+    console.log(stu1)
+</script>
+</body>
+</html>

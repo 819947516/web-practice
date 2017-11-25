@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form {
+            width: 100%;
+            max-width: 800px;
+            min-width: 600px;
+            font-size: 20px;
+            margin: 0 auto;
+
+        }
+        input{
+            width: 100%;
+            display: block;
+            height: 30px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>类型</legend>
+            <label for="">
+                email: <input type="email" name="email" id="test1">
+            </label>
+            <label for="">
+                password: <input type="text" id="test2">
+            </label>
+            <input type="submit" value="提交">
+        </fieldset>
+    </form>
+    <script>
+        var email = document.getElementById("test1");
+        var pass = document.getElementById("test2");
+        var num = 0;
+        email.oninput = function () {
+            num++;
+            pass.value = num;
+        }
+        email.oninvalid = function () {
+            this.setCustomValidity("输入格式错了啦");
+        }
+    </script>
+</body>
+</html>

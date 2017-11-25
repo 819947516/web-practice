@@ -1,0 +1,83 @@
+/*最外容器*/
+.jd_container {
+    width: 100%;
+}
+/*顶部通栏*/
+.jd_header{
+    width: 100%;
+    height: 40px;
+    background-color: rgb(201, 21, 35);
+    position: relative;
+    padding: 0 60px 0 70px;
+}
+.jd_header .header_logo {
+    width: 60px;
+    height: 36px;
+    /*background-color: orange;*/
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    background: url("../images/sprites.png") no-repeat 0 -103px/200px 200px;
+}
+.jd_header .search_logo {
+    width: 20px;
+    height: 20px;
+    background: url("../images/sprites.png") no-repeat -60px -109px/200px 200px;
+    position: absolute;
+    left: 75px;
+    top: 10px;
+}
+.jd_header .header_search {
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    margin-top: 5px;
+    padding-left: 25px;
+}
+.jd_header .header_login {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    line-height: 40px;
+    color: #fff;
+    font-size: 17px;
+}
+/*轮播图*/
+.jd_banner {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.jd_banner .banner_images {
+    width: 1000%;
+}
+.jd_banner .banner_images li {
+    width: 10%;
+    float: left;
+}
+.jd_banner .banner_images li a {
+    width: 100%;
+    display: block;
+}
+.jd_banner .banner_images li a img {
+    width: 100%;
+    display: block;
+}
+/*轮播图标签*/
+.banner_index {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -44px;
+}
+.banner_index li {
+    float: left;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    margin-right: 5px;
+}
+.banner_index li.current {
+    background: white;
+}

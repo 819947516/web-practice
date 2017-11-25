@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 280px;
+            text-align: center;
+            background-color: #07fff6;
+            margin: 100px auto;
+            /*vertical-align: middle;*/
+            padding-top: 220px;
+            font: 700 30px "simsun";
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <script src="jquery1.0.0.1.js"></script>
+    <script>
+        var box = document.getElementsByTagName("div")[0];
+        box.onmousemove = function (event) {
+            event = event || window.event;
+            var pagex = event.pageX || scroll().left + event.clientX;
+            var pagey = event.pageY || scroll().top + event.clientY;
+            var xx = box.offsetLeft;
+            var yy = box.offsetTop;
+            var targetx = pagex - xx;
+            var targety = pagey - yy;
+//            if (targety<10&&targetx<10){
+//                targety = "00"+targety;
+//                targetx = "00"+targetx;
+//                box.innerHTML = "鼠标在盒子内的X坐标为："+targetx+"px<br>鼠标在盒子内的Y坐标为："+targety+"px";
+//            }else if (targety<100&&targetx<10){
+//                targety = "0"+targety;
+//                targetx = "00"+targetx;
+//                box.innerHTML = "鼠标在盒子内的X坐标为："+targetx+"px<br>鼠标在盒子内的Y坐标为："+targety+"px";
+//            }else if(targety<10&&targetx<100){
+//                targety = "00"+targety;
+//                targetx = "0"+targetx;
+//                box.innerHTML = "鼠标在盒子内的X坐标为："+targetx+"px<br>鼠标在盒子内的Y坐标为："+targety+"px"
+//            }else if(targety<100&&targetx<100){
+//                targety = "0"+targety;
+//                targetx = "0"+targetx;
+//                box.innerHTML = "鼠标在盒子内的X坐标为："+targetx+"px<br>鼠标在盒子内的Y坐标为："+targety+"px"
+//            }else{
+//                box.innerHTML = "鼠标在盒子内的X坐标为："+targetx+"px<br>鼠标在盒子内的Y坐标为："+targety+"px"
+//            }
+            if(targetx<10){
+                targetx = "00"+targetx;
+            }else if (targetx<100){
+                targetx = "0"+targetx;
+            }
+            if(targety<10){
+                targety = "00"+targety;
+            }else if (targety<100){
+                targety = "0"+targety;
+            }
+            box.innerHTML = "鼠标在盒子内的X坐标为："+targetx+"px<br>鼠标在盒子内的Y坐标为："+targety+"px"
+        }
+    </script>
+</body>
+</html>

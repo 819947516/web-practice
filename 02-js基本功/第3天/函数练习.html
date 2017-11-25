@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    求圆的周长;long=2*pi*r
+    function lg(r) {
+        var pi=Math.PI;
+        var long=2*pi*r;
+        return long;
+    }
+    console.log(lg(2));
+//    求圆的面积 space=pi*r*r；
+    function getSpace(r) {
+//        var pi=Math.PI;
+//        var space=pi*Math.pow(r,2);
+//        return space;
+        return Math.PI*Math.pow(r,2);
+    }
+    console.log(getSpace(2));
+//    两个数中的最大值
+console.log(getMax(15, 12));
+function getMax(a,b) {
+//        if(a>b){
+//            return a;
+//        }else{
+//            return b;
+//        }
+//    return可以切断函数；
+//        if(a>b){
+//            return a;
+//        }
+//        return b;
+    return a>b?a:b;
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #999;
+        }
+        ul {
+            width: 1000px;
+            height: 80px;
+            list-style: none;
+            margin: 100px auto;
+            position: relative;
+        }
+        ul::before,ul::after {
+            content: '';
+            position: absolute;
+            left: -100px;
+            width: 100px;
+            height: 80px;
+            background-color: #fff;
+        }
+        ul::after {
+            left: auto;
+            right: -100px;
+        }
+        ul li {
+            width: 200px;
+            height: 80px;
+            float: left;
+        }
+        li span.left,li span.right {
+            width: 30px;
+            height: 100%;
+        }
+        li span.center {
+            width: 140px;
+        }
+        li span {
+            float: left;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            font-size: 25px;
+            background-color: #FFFFFF;
+
+            font-family: "Microsoft Yahei";
+        }
+        li:hover .center {
+            transform: translateY(-20px);
+            box-shadow: 0 22px  10px -10px #666;
+            text-shadow: 5px 5px 3px #666;
+        }
+        li:hover span.left {
+            transform-origin: left;
+            transform: skew(0,-34deg);
+            box-shadow: 5px 22px  10px -10px #666;
+        }
+        li:hover span.right {
+            transform-origin: right;
+            transform: skew(0,34deg);
+            box-shadow: -5px 22px  10px -10px #666;
+        }
+
+    </style>
+</head>
+<body>
+        <ul>
+            <li>
+                <span class="left"></span>
+                <span class="center">传智播客</span>
+                <span class="right"></span>
+            </li>
+            <li>
+                <span class="left"></span>
+                <span class="center">传智播客</span>
+                <span class="right"></span>
+            </li>
+            <li>
+                <span class="left"></span>
+                <span class="center">传智播客</span>
+                <span class="right"></span>
+            </li>
+            <li>
+                <span class="left"></span>
+                <span class="center">传智播客</span>
+                <span class="right"></span>
+            </li>
+            <li>
+                <span class="left"></span>
+                <span class="center">传智播客</span>
+                <span class="right"></span>
+            </li>
+        </ul>
+</body>
+</html>

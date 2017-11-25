@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .rotateZ {
+            width: 330px;
+            height: 227px;
+            margin: 100px auto;
+            perspective: 200px;
+        }
+        img {
+            transition: all 2s linear;
+        }
+        .rotateZ:hover img {
+            transform: rotateZ(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="rotateZ">
+        <img src="images/z.jpg" alt=""/>
+    </div>
+</body>
+</html>

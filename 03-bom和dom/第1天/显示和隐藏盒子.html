@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        button {
+            margin: 10px;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-left: 10px;
+        }
+        .hedn {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName("button")[0];
+            var div = document.getElementsByTagName("div")[0];
+//            if (btn.innerHTML==="隐藏"){
+//                btn.onclick = function () {
+//                    btn.innerHTML = "显示";
+//                    div.className = "hedn";
+//                }
+//            }else {
+//                btn.onclick = function () {
+//                    btn.innerHTML = "隐藏";
+//                    div.className = "show";
+//                }
+//            }if位置写错了；
+            btn.onclick = function () {
+                if (this.innerHTML === "隐藏"){
+                    btn.innerHTML = "显示";
+                    div.className = "hedn";
+                }else {
+                    btn.innerHTML = "隐藏";
+                    div.className = "show";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<button>隐藏</button>
+<div>木心</div>
+</body>
+</html>

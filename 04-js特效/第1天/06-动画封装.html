@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1 {
+            margin: 0;
+            padding: 5px;
+            height: 200px;
+            background-color: #ddd;
+            position: relative;
+        }
+        button {
+            margin: 5px;
+        }
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <button>运动到200</button>
+        <button>运动到400</button>
+        <div class="box2"></div>
+    </div>
+    <script>
+        var btn = document.getElementsByTagName("button");
+        var box2 = document.getElementsByClassName("box2")[0];
+        btn[0].onclick = function () {
+//            var timer = setInterval(function () {
+//                box2.style.left = box2.offsetLeft + 10 + "px";
+//                if (box2.offsetLeft===200){
+//                    clearInterval(timer);
+//                }
+//            },100)
+            animate(200);
+        }
+        btn[1].onclick = function () {
+//            var timer = setInterval(function () {
+//                box2.style.left = box2.offsetLeft + 10 + "px";
+//                if (box2.offsetLeft===400){
+//                    clearInterval(timer);
+//                }
+//            },100)
+            animate(400);
+        }
+        //封装函数
+        function animate(num) {
+            var timer = setInterval(function () {
+                box2.style.left = box2.offsetLeft + 10 +"px";
+                if(box2.offsetLeft === num){
+                    clearInterval(timer);
+                }
+            },100)
+        }
+    </script>
+</body>
+</html>

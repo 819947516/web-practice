@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            list-style: none;
+        }
+        div {
+            width: 500px;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        ul {
+            width: 600px;
+            height: 40px;
+            margin-left: -1px;
+        }
+        li {
+            float: left;
+            width: 101px;
+            height: 40px;
+            text-align: center;
+            font: 700 18px/40px "microsoft yahei";
+            background-color: pink;
+            cursor: pointer;
+        }
+        span {
+            display: none;
+            /*display: block;*/
+            width: 500px;
+            height: 360px;
+            background-color: yellow;
+            text-align: center;
+            font: 700 150px/360px "simsun";
+        }
+        .show {
+            display: block;
+        }
+        .current {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var divArr = document.getElementsByTagName("div");
+            for(var j=0;j<divArr.length;j++){
+                fn(divArr[j]);
+            }
+            function fn(ele) {
+                var li = ele.getElementsByTagName("li");
+                var span = ele.getElementsByTagName("span");
+//            for (var i=0;i<li.length;i++){
+//                li[i].index = i;
+//                li[i].onmouseover = function () {
+//                    this.className = "current";
+//                    span[this.index].className = "show";
+//                }
+//                li[i].onmouseout = function () {
+//                    this.className = "";
+//                    span[this.index].className = "";
+//                }
+//            }鼠标移出上面标签栏就会跳变不合适；
+                for (var i = 0; i < li.length; i++) {
+                    li[i].aaa = i;
+                    li[i].onmouseover = function () {
+                        for (var j = 0; j < li.length; j++) {
+                            li[j].className = "";
+                            span[j].className = "";
+//                        console.log(span.className);
+                        }
+                        this.className = "current";
+                        span[this.aaa].className = "show";
+                    }
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>裙子</li>
+            <li>袜子</li>
+            <li>鞋子</li>
+            <li>裤子</li>
+            <li>帽子</li>
+        </ul>
+        <span>裙子</span>
+        <span>袜子</span>
+        <span>鞋子</span>
+        <span>裤子</span>
+        <span>帽子</span>
+    </div>
+    <div>
+        <ul>
+            <li>裙子</li>
+            <li>袜子</li>
+            <li>鞋子</li>
+            <li>裤子</li>
+            <li>帽子</li>
+        </ul>
+        <span>裙子</span>
+        <span>袜子</span>
+        <span>鞋子</span>
+        <span>裤子</span>
+        <span>帽子</span>
+    </div>
+    <div>
+        <ul>
+            <li>裙子</li>
+            <li>袜子</li>
+            <li>鞋子</li>
+            <li>裤子</li>
+            <li>帽子</li>
+        </ul>
+        <span>裙子</span>
+        <span>袜子</span>
+        <span>鞋子</span>
+        <span>裤子</span>
+        <span>帽子</span>
+    </div>
+</body>
+</html>

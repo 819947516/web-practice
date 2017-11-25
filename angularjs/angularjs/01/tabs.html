@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F7F7F7;
+        }
+
+        .tabs {
+            width: 400px;
+            margin: 30px auto;
+            background-color: #FFF;
+            border: 1px solid #C0DCC0;
+            box-sizing: border-box;
+        }
+
+        .tabs nav {
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            overflow: hidden;
+            background-color: #C0DCC0;
+            display: flex;
+        }
+
+        nav a {
+            display: block;
+            width: 100px;
+            border-right: 1px solid #FFF;
+            color: #000;
+            text-decoration: none;
+        }
+
+        nav a:last-child {
+            border-right: 0 none;
+        }
+
+        nav a.active {
+            background-color: #9BAF9B;
+        }
+
+        .cont {
+            overflow: hidden;
+            /*display: none;*/
+        }
+
+        .cont ol {
+            line-height: 30px;
+        }
+
+    </style>
+</head>
+<body ng-app="Tabs">
+<div class="tabs" ng-controller="Tabscontroller">
+    <nav>
+        <a href="javascript:;" ng-click = switch('local') ng-class="{active: type == 'local' }">国内新闻</a>
+        <a href="javascript:;" ng-click = switch('global') ng-class="{active: type == 'global' }">国际新闻</a>
+        <a href="javascript:;" ng-click = switch('sports') ng-class="{active: type == 'sports' }">体育新闻</a>
+        <a href="javascript:;" ng-click = switch('funny') ng-class="{active: type == 'funny' }">娱乐新闻</a>
+    </nav>
+    <div ng-switch="type">
+        <section class="cont" ng-switch-when="local">
+            <ol>
+                <li>河南再次发生矿难，死伤人数超过100</li>
+                <li>禽流感sadsa作物农延，温家宝指示</li>
+                <li>南方大旱，农作物减产绝收面积上亩</li>
+                <li>猪asdad暴发</li>
+                <li>禽流感在全农作物继续蔓延，温家宝指示</li>
+                <li>南方大农作物减产绝收面积上亩</li>
+                <li>猪流感在广东群体性暴发</li>
+            </ol>
+        </section>
+        <section class="cont" ng-switch-when="global">
+            <ol>
+                <li>河sadad人数超过100</li>
+                <li>禽流感在全国多处农作物农延，温家宝指示</li>
+                <li>南方大旱，农作物减产绝收面积上亩</li>
+                <li>猪流感在广东群体性暴发</li>
+                <li>禽流感在全农作物继续蔓延，温家宝指示</li>
+                <li>南方大sadad减产绝收面积上亩</li>
+                <li>猪流感在广东群体性暴发</li>
+            </ol>
+        </section>
+        <section class="cont" ng-switch-when="sports">
+            <ol>
+                <li>河南再次发生矿难，死伤人数超过100</li>
+                <li>禽流感在全国多处农作物农延，温家宝指示</li>
+                <li>南方大dsad产绝收面积上亩</li>
+                <li>猪流感在广东群体性暴发</li>
+                <li>禽sada物继续蔓延，温家宝指示</li>
+                <li>南方大农作物减产绝收面积上亩</li>
+                <li>猪流感在广东群体性暴发</li>
+            </ol>
+        </section>
+        <section class="cont" ng-switch-when="funny">
+            <ol>
+                <li>河南再次发生矿sadasadad难，死伤人数超过100</li>
+                <li>禽流感在全sada国多处农作物农延，温家宝指示</li>
+                <li>南方大sada农作物减产绝收面积上亩</li>
+                <li>猪流感在广东群体性暴发</li>
+                <li>禽流感在全农作物继续蔓延，温家宝指示</li>
+                <li>南方大农作物减产绝收面积上亩</li>
+                <li>猪流感在广东群sadad体性暴发</li>
+            </ol>
+        </section>
+    </div>
+</div>
+<script src="../../libs/angular.min.js"></script>
+<script>
+    var Tabs = angular.module("Tabs",[]);
+    Tabs.controller("Tabscontroller",["$scope",function ($scope) {
+        $scope.type = "local";
+//        $scope.key = "local";
+        $scope.switch = function (type) {
+//            $scope.key = key;
+            $scope.type = type;
+        }
+    }])
+</script>
+</body>
+</html>

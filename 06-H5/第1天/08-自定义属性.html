@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- 给标签添加自定义属性 必须以data-开头 -->
+    <div class="box" title="盒子" data-my-name="zs"  data-content="我是一个div">div</div>
+    <script>
+        var box = document.querySelector("div");
+//获取
+        console.log(box.dataset["myName"]);
+        box.dataset["content"] = "aaa";
+    </script>
+</body>
+</html>

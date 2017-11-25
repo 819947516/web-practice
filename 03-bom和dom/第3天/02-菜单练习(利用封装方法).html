@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul li {
+            list-style: none;
+        }
+        ul {
+            margin-left: 100px;
+        }
+        li {
+            float: left;
+            margin: 10px;
+            width: 100px;
+            height: 40px;
+            background: beige;
+            text-align: center;
+            line-height: 40px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .current {
+            background: burlywood;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var ul = getEleId("list");
+            var aArr = ul.getElementsByTagName("a");
+            for (var i=0;i<aArr.length;i++) {
+                aArr[i].onclick = function () {
+                     this.parentNode.className = "current"
+                    // 数组不能直接一起赋值属性；
+//                    getAllSiblingNodes(this.parentNode).className = "";
+                    var sibArr = getAllSiblingNodes(this.parentNode);
+                    for(var j=0;j<sibArr.length;j++){
+                        sibArr[j].className = "";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li class="current"><a href="#">首页</a></li>
+    <li><a href="javascript:void(0)">博客</a></li>
+    <li><a href="javascript:void(0)">播客</a></li>
+    <li><a href="javascript:void(0)">相册</a></li>
+    <li><a href="javascript:void(0)">关于</a></li>
+    <li><a href="javascript:void(0)">帮助</a></li>
+</ul>
+<script src="tools.js"></script>
+</body>
+</html>

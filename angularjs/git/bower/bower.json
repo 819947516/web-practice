@@ -1,0 +1,17 @@
+{
+  "name": "Leej",
+  "description": "",
+  "main": "",
+  "authors": [
+    "leej"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .all {
+            width: 500px;
+            height: 200px;
+            border: 1px solid #000;
+            padding: 5px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        ul {
+            width: 600%;
+            list-style: none;
+            position: absolute;
+        }
+        li {
+            float: left;
+        }
+        #arr {
+            display: none;
+        }
+        #arr span {
+            width:40px;
+            height:40px;
+            position:absolute;
+            left:5px;
+            top:50%;
+            margin-top:-20px;
+            background:#000;
+            cursor:pointer;
+            line-height:40px;
+            text-align:center;
+            font-weight:bold;
+            font-family:"黑体";
+            font-size:30px;
+            color:#fff;
+            opacity:0.5;
+            border:1px solid #fff;
+        }
+        #arr #right {
+            right:5px;
+            left:auto;
+        }
+        #arr.current1 {
+            display: block;
+        }
+        ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        ol li {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #000;
+            color: #000;
+            background-color: #fff;
+            line-height: 16px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        ol .current2{
+            background-color: #ff8d14;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="all" id='all'>
+        <div class="screen" id="screen">
+            <ul id="ul">
+                <li><img src="images/1.jpg" width="500" height="200" /></li>
+                <li><img src="images/2.jpg" width="500" height="200" /></li>
+                <li><img src="images/3.jpg" width="500" height="200" /></li>
+                <li><img src="images/4.jpg" width="500" height="200" /></li>
+                <li><img src="images/5.jpg" width="500" height="200" /></li>
+            </ul>
+            <ol></ol>
+            <div id="arr">
+                <span id="left"><</span>
+                <span id="right">></span>
+            </div>
+            <!--<div class="square">-->
+                <!--<span class="current2">1</span>-->
+                <!--<span>2</span>-->
+                <!--<span>3</span>-->
+                <!--<span>4</span>-->
+                <!--<span>5</span>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <script>
+        var all = document.getElementById("all");
+        var screen = all.children[0];
+        var ul = screen.children[0];
+        var ol = screen.children[1];
+        var Width = screen.offsetWidth;
+        var btnLeRi = screen.children[2];
+        var spanArr = btnLeRi.children;
+//        var square = screen.children[3];
+//        var bmspanArr = square.children;
+        all.onmouseover = function () {
+            btnLeRi.className = "current1";
+            clearInterval(timer);
+        }
+        all.onmouseout = function () {
+            btnLeRi.className = "";
+            timer = setInterval(autoPlay,1000);
+        }
+        var newli = ul.children[0].cloneNode(true);
+        ul.appendChild(newli);
+        for (var i=0;i<ul.children.length-1;i++){
+            var olLi = document.createElement("li");
+            olLi.innerHTML = i+1;
+            ol.appendChild(olLi);
+        }
+        var olliArr = ol.children;
+        olliArr[0].className = "current2";
+        for(var i=0;i<olliArr.length;i++){
+            olliArr[i].index = i;
+            olliArr[i].onmouseover = function () {
+                for(var j=0;j<olliArr.length;j++){
+                    olliArr[j].className = "";
+                }
+                this.className = "current2";
+                animate(ul,-this.index*Width);
+                key = square = this.index;//同步下面 这句很重要；
+            }
+        }
+        //添加定时器
+        var timer  =  setInterval(autoPlay,1000);
+        var key = 0;
+        var square = 0;
+        function autoPlay() {
+            key++;
+            if (key>olliArr.length){
+                ul.style.left = 0;
+                key = 1;
+            }
+            animate(ul,-key*Width);
+            square++;
+            if (square>olliArr.length-1){
+                square = 0;
+            }
+            for(var i=0;i<olliArr.length;i++){
+                olliArr[i].className = "";
+            }
+            olliArr[square].className = "current2";
+
+        }
+        spanArr[1].onclick = function () {
+            autoPlay();
+        }
+        spanArr[0].onclick = function () {
+            key--;
+            if (key<0){
+                key = olliArr.length-1;
+                ul.style.left = -Width*(ul.children.length-1);//先秒变最后那个1，然后执行下面滑到5；
+            }
+            animate(ul,-key*Width);
+            square--;
+            if (square<0) {
+                square = olliArr.length - 1;
+            }
+            for(var i=0;i<olliArr.length;i++){
+                olliArr[i].className = "";
+            }
+            olliArr[square].className = "current2"
+        }
+
+
+
+
+//        var index = 0;
+//        spanArr[0].onclick = function () {
+//            index--;
+//            if (index<0){
+//                index = 0;
+//                alert("1");
+//            }
+//            animate(ul,-Width*index)
+//        }
+//        spanArr[1].onclick = function () {
+//            index++;
+//            if (index>ul.children.length-1){
+//                index = ul.children.length-1;
+//                alert("5");
+//            }
+//            animate(ul,-Width*index);
+//        }
+        function animate(ele,num) {
+            clearInterval(ele.timer);
+            var speed = ele.offsetLeft>num? -10:10;
+            ele.timer = setInterval(function () {
+                var len = ele.offsetLeft - num;//len必须先定义不能放在执行一遍后面,如果放在后面就要len<=speed;
+                ele.style.left = ele.offsetLeft + speed +"px";
+                if(Math.abs(len)<Math.abs(speed)){
+                    ele.style.left = num + "px";
+                    clearInterval(ele.timer);
+                }
+            },10)
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+        li{
+            width: 100px;
+            height: 100px;
+            background: deeppink;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //获取box改为red
+            var box = getEleId("box");
+            box.style.backgroundColor = "red";
+            //获取第一个和最后一个子节点
+            var parent = box.parentNode;
+            getFirstNode(parent).style.backgroundColor = "blue";
+            getLastNode(parent).style.backgroundColor = "blue";
+            //获取上一个和下一个兄弟节点
+            getPrevNode(box).style.backgroundColor = "yellow";
+            getNextNode(box).style.backgroundColor = "yellow";
+            //指定兄弟节点
+            getEleOfIndex(box,3).style.backgroundColor = "green";
+            //获取所有的兄弟节点（返回值是数组，所以用for循环操作）
+            var arr = getAllSiblingNodes(box);
+            for(var i=0;i<arr.length;i++){
+                arr[i].style.backgroundColor = "black";
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li id="box"></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script src="tools.js"></script>
+</body>
+</html>

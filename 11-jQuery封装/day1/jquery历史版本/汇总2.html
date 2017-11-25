@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    init.isHTML = function (str) {
+      if (!str){
+          return false;
+      }
+      if (str.charAt(0) === "<" && str.charAt(str.length) === ">" && str.length > 3){
+          return true;
+      } else {
+          return false;
+      }
+    };
+    init.trim = function (str) {
+        if (!str){
+            return str;
+        }
+        if (str.trim){
+            return str.trim();
+        }else {
+            return str.replace(/^\s+|\s+$/g,"");
+        }
+    };
+    init.isFunction = function (fn) {
+        if ( typeof fn  === "function" ){
+            return true;
+        }
+        return false;
+    };
+    init.isWindow = function (e) {
+        if (e.window === e){
+            return true;
+        }
+        return false;
+    };
+    init.likeArray = function (arr) {
+        if (init.isFunction(arr) || init.isWindow(arr) || typeof arr !== "object"){
+            return false;
+        }
+        if (({}).toString.call(arr) === "[object Array]"){
+            return true;
+        }
+        if (("length" in arr) && (arr.length ===0 || arr.length-1 in arr)){
+            return true;
+        }
+        return false;
+    };
+
+
+    function init(selector) {
+        if (!selector){
+            return selector;
+        }
+        else if(typeof selector === "string"){
+            if (init.isHTML(selector)){
+                selector = init.trim(selector);
+                var tempDiv = document.createElement("div");
+                tempDiv.innerHTML = selector;
+                [].push.apply(this,tempDiv.childNodes);
+                return this;
+            }
+            else{
+                try {
+                    var nodes = document.querySelectorAll(selector);
+                    [].push.apply(this,nodes);
+                    return this;
+                }catch(e){
+                    this.length = 0;
+                    return this;
+                }
+            }
+        }
+        else if (init.likeArray(selector)){
+            [].push.apply(this,selector);
+            return this;
+        }else{
+            [].push.call(selector);
+            return this;
+        }
+    }
+</script>
+</body>
+</html>

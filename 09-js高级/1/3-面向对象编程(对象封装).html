@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //设置页面中的div和p的边框为1px solid red
+//            var divs = getElement("div");
+//            var ps = getElement("p");
+//            getStyle(divs);
+//            getStyle(ps);
+//
+//            function getElement(ele) {
+//                return document.getElementsByTagName(ele);
+//            }
+//            function getStyle(ele) {
+//                for (var i = 0; i < ele.length; i++) {
+//                    var E = ele[i];
+//                    E.style.border = "1px solid red";
+//                }
+//            }
+
+            var lQuery = {
+                getElement:{
+                    tagName:function (ele) {
+                        return document.getElementsByTagName(ele);
+                    },
+                    id:function (ele) {
+                        return document.getElementById(ele);
+                    }
+                },
+                setCSS: {
+                    getStyle:function (ele) {
+                        for (var i = 0; i < ele.length; i++) {
+                            var E = ele[i];
+                            E.style.border = "1px solid red";
+                        }
+                    },
+                    getBack:function (ele) {
+                        for (var i = 0; i < ele.length; i++) {
+                            var E = ele[i];
+                            E.style.backgroundColor = "blue";
+                        }
+                    }
+                }
+            };
+            var divs = lQuery.getElement.tagName("div");
+            var ps = lQuery.getElement.tagName("p");
+            lQuery.setCSS.getStyle(divs);
+            lQuery.setCSS.getStyle(ps);
+            lQuery.setCSS.getBack(divs);
+            lQuery.setCSS.getBack(ps);
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <p>我是一个P标签</p>
+    <p>我是一个P标签</p>
+    <p>我是一个P标签</p>
+</body>
+</html>

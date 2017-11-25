@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //设置页面中的div和p的边框为1px solid red
+            var divs = document.getElementsByTagName("div");
+            var ps = document.getElementsByTagName("p");
+            for (var i=0;i<divs.length;i++) {
+                divs[i].style.border = "1px solid red";
+            }
+            for (var j = 0; j < ps.length; j++) {
+                var p = ps[j];
+                p.style.border = "1px solid red";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <p>我是一个P标签</p>
+    <p>我是一个P标签</p>
+    <p>我是一个P标签</p>
+</body>
+</html>

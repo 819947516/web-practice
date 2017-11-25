@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    var div = document.getElementsByTagName("div")[0];
+        var bool = true;
+        div.onclick = function () {
+             bool = false;
+        }
+        div.onmouseout = function () {
+            if (bool){
+                alert(1)
+            }else {
+                alert(2)
+            }
+        }
+
+</script>
+</body>
+</html>

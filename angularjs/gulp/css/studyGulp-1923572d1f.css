@@ -1,0 +1,14 @@
+body.span {
+  color: #000;
+  transiton: all 2s 1s;
+  margin: auto;
+}
+body div {
+  width: 100px;
+}
+body p {
+  height: 100%;
+}
+body p .color.p {
+  color: #000;
+}

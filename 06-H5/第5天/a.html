@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+</head>
+<body style="background:pink;">
+<div id="ball" style="position:absolute;" onmouseover="stop()" onmouseout="jixu()">
+    <img src="http://img.taobaocdn.com/imgextra/i//TBfGvsdpXXXXbDXXXXXXXXXXXX-.gif"/>
+</div>
+<script type="text/javascript">
+    //定义局部变量
+    var directX=10;//定义x轴方向
+    var directY=10;//定义y轴方向
+    var ballX=2;//定义x轴坐标
+    var ballY=2;//定义y轴坐标
+    var speed=1;//定义一个速度
+    var myball=document.getElementById("ball");
+    function ballMove(){
+        ballX=ballX+directX*speed;
+        ballY=ballY+directY*speed;
+//改变div的left,top的值
+        myball.style.left=ballX+"px";
+        myball.style.top=ballY+"px";
+//判断x轴什么时候转向
+        if(ballX+myball.offsetWidth>=document.documentElement.clientWidth||ballX<=5){
+//clientWidth浏览器不带滚动条的宽度;clientHeight浏览器不带工具栏菜单栏以及滚动条等的高度
+            directX=-directX;//offsetWidth可以返回一个对象的实际宽度(不带单位)offsetHeight类同
+        }
+//判断y轴何时转向
+        if(ballY+myball.offsetHeight>=document.documentElement.clientHeight||ballY<=5){
+            directY=-directY;
+        }
+    }
+    var stopmove=setInterval("ballMove()",10);
+    function stop(){
+        clearInterval(stopmove);
+    }
+    function jixu(){
+        var stopmove=setInterval("ballMove()",10);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var liNode = $("<span>我是创建的span</span>");
+            $("ul").html("<li>我是创建的li</li>");
+            $("ul").append(liNode);
+
+            $("ul").eq(3).empty();
+
+            $("ul").eq(2).html("");
+
+            $("ul").eq(1).remove();
+
+            $("ul").eq(0).clone().appendTo("ul");
+        })
+    </script>
+</head>
+<body>
+    <ul class="0">
+        <li>0</li>
+    </ul>
+
+    <ul class="1">
+        <li>1</li>
+    </ul>
+
+    <ul class="2">
+        <li>2</li>
+    </ul>
+
+    <ul class="3">
+        <li>3</li>
+    </ul>
+</body>
+</html>

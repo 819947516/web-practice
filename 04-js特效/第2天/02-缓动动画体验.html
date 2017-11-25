@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #42f6ff;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName("button")[0];
+            var div = document.getElementsByTagName("div")[0];
+//            var timer = null ;
+//            btn.onclick = function () {
+//                clearInterval(timer);
+//                timer = setInterval(function () {
+//                    var target = 400;
+//                    var step = (target - div.offsetLeft)/10;
+//                    div.style.left = div.offsetLeft + step + "px";
+//                },30)
+//            }
+            //简单版
+            btn.onclick = function () {
+                setInterval(function () {
+                    div.style.left = div.offsetLeft + (400-div.offsetLeft)/10 + "px";
+                },30)
+            }
+        }
+    </script>
+</head>
+<body>
+<button>移动到400</button>
+<div></div>
+</body>
+</html>

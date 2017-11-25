@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery1.0.0.1.js"></script>
+<script>
+//    if (client().width>960){
+//        document.body.style.backgroundColor = "pink";
+//    }else if (client().width>640){
+//        document.body.style.backgroundColor = "green";
+//    }else {
+//        document.body.style.backgroundColor = "red";
+//    }
+    fn();
+    window.onresize = fn;
+        function fn() {
+        if (client().width>960){
+            document.body.style.backgroundColor = "pink";
+        }else if (client().width>640){
+            document.body.style.backgroundColor = "green";
+        }else {
+            document.body.style.backgroundColor = "red";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,ul,ol,li,img {
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        #box {
+            width:520px;
+            height:280px;
+            padding:5px;
+            position: relative;
+            border:1px solid #ccc;
+            margin:100px auto 0;
+            /*overflow:hidden;*/
+        }
+        .ad {
+            width:520px;
+            height:280px;
+            overflow:hidden;
+            position:relative;
+        }
+        ul {
+            width: 500%;
+            position: absolute;
+        }
+        ul li {
+            float: left;
+        }
+        #arr {
+            display: none;
+        }
+        #arr span {
+            width:40px;
+            height:40px;
+            position:absolute;
+            left:5px;
+            top:50%;
+            margin-top:-20px;
+            background:#000;
+            cursor:pointer;
+            line-height:40px;
+            text-align:center;
+            font-weight:bold;
+            font-family:"黑体";
+            font-size:30px;
+            color:#fff;
+            opacity:0.5;
+            border:1px solid #fff;
+        }
+        #arr #right {
+            right:5px;
+            left:auto;
+        }
+        #arr.current {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="all">
+        <div class="ad">
+            <ul id="imgs">
+                <li><img src="images/1.jpg" /></li>
+                <li><img src="images/2.jpg" /></li>
+                <li><img src="images/3.jpg" /></li>
+                <li><img src="images/4.jpg" /></li>
+                <li><img src="images/5.jpg" /></li>
+            </ul>
+        </div>
+        <div id="arr">
+            <span id="left"><</span>
+            <span id="right">></span>
+        </div>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var ad = box.children[0];
+        var ul = ad.children[0];
+        var adWidth = ad.offsetWidth;
+        var btnLeRi = box.children[1];
+        var spanArr = btnLeRi.children;
+        box.onmouseover = function () {
+            btnLeRi.className = "current"
+        }
+        box.onmouseout = function () {
+            btnLeRi.className = "";
+        }
+        var index = 0;
+        spanArr[0].onclick = function () {
+            index--;
+            if (index<0){
+                index = 0;
+                alert("1");
+            }
+            animate(ul,-adWidth*index)
+        }
+        spanArr[1].onclick = function () {
+            index++;
+            if (index>ul.children.length-1){
+                index = ul.children.length-1;
+                alert("5");
+            }
+            animate(ul,-adWidth*index);
+        }
+        function animate(ele,num) {
+            clearInterval(ele.timer);
+            var speed = ele.offsetLeft>num? -10:10;
+            ele.timer = setInterval(function () {
+                var len = ele.offsetLeft - num;//len必须先定义不能放在执行一遍后面,如果放在后面就要len<=speed;
+                ele.style.left = ele.offsetLeft + speed +"px";
+                if(Math.abs(len)<Math.abs(speed)){
+                    ele.style.left = num + "px";
+                    clearInterval(ele.timer);
+                }
+            },10)
+        }
+
+    </script>
+</body>
+</html>

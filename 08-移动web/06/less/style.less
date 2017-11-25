@@ -1,0 +1,35 @@
+@aaa:#333;
+.box{
+  div > .aaa {
+    color: @aaa;
+    .box2 {
+      display: inline;
+      position: absolute;
+    }
+    .box3 {
+      color: #000;
+    }
+  }
+}
+.aaaaa {
+  color: #000;
+}
+.oneColor(@color:#0094ff){
+  background-color: @color;
+  border:1px solid @color;
+  color:@color;
+}
+.red{
+  color: #000;
+}
+body{
+  .red();
+}
+
+ul{
+  .oneColor(#000);
+}
+
+div{
+  .oneColor();
+}

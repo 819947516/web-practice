@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    求斐波那契数列Fibonacci中的第n个数是多少？
+//    1 1 2 3 5 8 13 21...
+    function Fi(n) {
+        if (n>=3){
+            var n1=1;
+            var n2=1;
+            for (var i=3;i<=n;i++){
+                var temp=n2;
+                n2=n1+n2;
+                n1=temp;
+            }
+            return n2;
+        }else{
+            return 1;
+        }
+    }
+    console.log(Fi(2))
+</script>
+</body>
+</html>

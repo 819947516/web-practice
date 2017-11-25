@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <p class="a">1</p>
+    <div class="a">2</div>
+    <a class="a">3</a>
+    <a class="a">4</a>
+</div>
+<script>
+    //判断是不是HTML
+    init.isHTML =  function (str) {
+        if (!str){
+            return false
+        }else if (str.charAt(0) === "<" && str.charAt(str.length-1) === ">" && str.length > 3 ){
+            return true;
+        }else {
+            return false;
+        }
+    };
+    //去掉字符串前后空格
+    init.trim = function (str) {
+        if (typeof str !== "string"){
+            return str;
+        }
+        if (str.trim){
+            return str.trim();
+        }
+        return str.replace(/^\s+|\s+$/g,"");
+
+    };
+
+    //判断是不是function
+    init.isFunction = function (fn) {
+        if (typeof fn === "function"){
+            return true;
+        }
+        return false;
+    };
+    //判断是不是window
+    init.isWindow = function (w) {
+        if (w.window === w){
+            return true;
+        }
+        return false;
+    };
+    //判断真假数组
+    init.likeArray = function (arr) {
+        //去掉function和window
+        if (init.isFunction(arr) || init.isWindow(arr) || typeof arr !== "object"){
+            return false;
+        }
+        //真数组
+        if (({}).toString.call(arr) === "[object Array]"){
+            return true;
+        }
+        //伪数组
+        //存在length 且 length要么为零 要么arr.length-1存在；
+        if (("length" in arr) && (arr.length === 0 || arr.length-1 in arr)){
+            return true;
+        }
+        return false;
+    }
+    /*
+     * JQ入口函数根据不同参数创建实例的样式：
+     *
+     * 测试用例：
+     * 1、传入null、undefined、0、NaN、''
+     * 2、选择器
+     * 3、html片段
+     * 4、数组[]
+     * 5、伪数组
+     * 6、对象{}
+     * 7、其他基本数据类型
+     * 8、DOM
+     * */
+
+    /*
+     * jq入口对不同参数处理的规律：
+     * 1、传入null、undefined、0、NaN、''返回空对象( 即空实例 )
+     * 2、传入字符串，那么需要判断是html片段 还是 其它，
+     * 如果是片段，则创建对应的DOM，然后添加到实例身上；
+     * 否则按照选择器获取页面中的DOM，然后把获取到的DOM添加到实例身上。
+     * 3、如果是数组或许伪数组，那么把每一项分别添加到实例身上。
+     * 4、除了上面的数据类型，剩余的，统一添加到实例身上。
+     * */
+
+    function init(selector) {
+        //1、传入null、undefined、0、NaN、''返回空对象( 即空实例 )
+        if (!selector){
+            return selector;
+        }
+        else if( typeof selector == "string"){
+            //2、传入字符串，那么需要判断是html片段 还是 其它，
+                //去掉前后空格 提高用户体验
+            selector = init.trim(selector);
+
+            if (init.isHTML(selector)){
+                var tempDiv = document.createElement("div");
+                tempDiv.innerHTML = selector;//innerHTML识别标签
+                [].push.apply(this,tempDiv.childNodes);//push方法本身就会添加length；
+                return this;
+            }
+            else {
+                // 否则按照选择器获取页面中的DOM，然后把获取到的DOM添加到实例身上
+                try {
+                    var nodes = document.querySelectorAll(selector);//当selector对应的选择器不存在时会报错，用try catch就可以避免报错了；
+                    [].push.apply(this,nodes);
+                    return this;
+                }catch (e){
+                    this.length = 0;
+                    return this;
+                }
+            }
+        }
+        //        传入真假数组时
+        else if (init.likeArray(selector)){
+            [].push.apply(this,selector);
+            return this;
+        }
+        else {
+//            this.length = 1;
+//            this[0] = selector;
+            [].push.call(this,selector);
+            return this;
+        }
+    }
+
+
+
+//    练习
+////NaN
+//    console.log(new init(NaN));
+////选择器
+//    console.log(new init(".a"));
+////str
+//    var spans = new init("<span>233</span><span>233ss</span>ahahahha<span>233</span><span>233</span>");
+//    console.log(spans);
+//    document.body.appendChild(spans[1]);
+////数组
+//    var arr1 = [1,2,"v",4,3];
+//    console.log(new init(arr1));
+//    var arr2 = {
+//        2:11,
+//        3:"aa",
+//        length:4
+//    };
+//    console.log(new init(arr2));
+//    var arr3 = {
+//        2:33,
+//        3:"bbaa",
+//        4:1,
+//        length:4
+//    };
+//    console.log(new init(arr3));
+    var oo = {
+        1:11,
+        2:22,
+        length:5
+    };
+    console.log(new init(oo));
+</script>
+</body>
+</html>

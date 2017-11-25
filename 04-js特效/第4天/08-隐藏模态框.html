@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,html {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .mask {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-color: rgba(0,0,0,0.6);
+            display: none;
+        }
+        .login {
+            width: 400px;
+            height: 300px;
+            cursor: pointer;
+            background-color: #fff;
+            margin: 200px auto;
+        }
+    </style>
+    <script src="jquery1.0.0.1.js"></script>
+    <script>
+        window.onload = function () {
+            var mask = document.getElementsByTagName("div")[0];
+            var a = document.getElementsByTagName("a")[1];
+            a.onclick = function (event) {
+                show(mask);
+                event = event || window.event;
+                if (event&&event.stopPropagation()){
+                    event.stopPropagation();
+                }else {
+                    event.cancelBubble = true;
+                }
+
+            }
+            document.onclick = function (event) {
+                event = event || window.event;
+//                var aaa = event.target || event.srcElement;
+                var aaa = event.target? event.target:event.srcElement;
+                if (aaa.id !== "login"){
+                    hide(mask);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="mask">
+        <div class="login" id="login"></div>
+    </div>
+    <a href="#">注册</a>
+    <a href="#">登陆</a>
+</body>
+</html>

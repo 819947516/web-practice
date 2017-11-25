@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: deepskyblue;
+            margin: 100px;
+            /*animation: move 2s;*/
+            animation-name: move;
+            animation-duration: 3s;
+            /*normal正常 alternate反向*/
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            animation-delay: 1s;
+            /*forwards保持结束时的状态 backwards回到运动前状态*/
+            animation-fill-mode: forwards;
+            animation-timing-function: linear;
+        }
+
+        @keyframes move {
+            0%{
+
+            }
+            100%{
+                transform: translateX(1000px) rotateZ(555deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

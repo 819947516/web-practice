@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("ul>li:odd").css("background-color","red");//odd 是奇数索引值，对应的则是偶数项；
+            $("ul>li:even").css("background-color","blue");//even是偶数索引值，对应的则是奇数项；
+        })
+    </script>
+</head>
+<body>
+<ul>
+    <li>忘逍遥</li>
+    <li>忘逍遥</li>
+    <li>忘逍遥</li>
+    <li>忘逍遥</li>
+    <li>忘逍遥</li>
+    <li>忘逍遥</li>
+</ul>
+</body>
+</html>

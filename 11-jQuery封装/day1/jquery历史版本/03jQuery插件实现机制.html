@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+     * jQuery插件实现机制：
+     * 就是给原型添加一些功能方法。
+     * */
+
+
+    (function (w) {
+        function jQuery() {
+            return new jQuery.fn.init(); //相当于 var stu = new Person（）; return stu;
+            //jQuery工厂函数
+        }
+        jQuery.fn = jQuery.prototype = {
+            constrcutor: jQuery
+        };
+        var init = jQuery.fn.init = function () {
+            //真正的构造函数；里面一些方法对象成员；
+        };
+        init.prototype = jQuery.fn;
+
+        w.jQuery = w.$ = jQuery; //暴露个外界的入口函数
+        // 通过$工厂，最终到达了init构造函数这里，
+        // 所有的初始化实例过程都在这里实现，
+        // 所以把这里称之为入口函数
+
+    })(window);
+    jQuery.fn.www = function () {
+        alert("aaa");
+    };
+//    console.log(jQuery.fn.www());
+    var a = $();
+    console.log(a.www());
+</script>
+</body>
+</html>

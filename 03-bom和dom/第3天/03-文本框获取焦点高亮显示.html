@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            display: block;
+            margin: 10px 0;
+        }
+        .current {
+            border: 2px solid red;
+            background: #4ee8db;
+        }
+    </style>
+</head>
+<body>
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+<button>设置</button>
+<script>
+    var btn = document.getElementsByTagName("button")[0];
+    var inpArr = document.getElementsByTagName("input");
+//    排他思想方式
+//    btn.onclick = function () {
+//        for (var i=0;i<inpArr.length;i++){
+//            inpArr[i].onclick = function () {
+//                for(var j=0;j<inpArr.length;j++){
+//                    inpArr[j].className = "";
+//                }
+//                this.className = "current";
+//            }
+//        }
+//    }
+    btn.onclick = function () {
+        for (var i=0;i<inpArr.length;i++){
+            inpArr[i].onfocus = function () {
+                this.className = "current";
+            }
+            inpArr[i].onblur = function () {
+                this.className = "";
+            }
+        }
+    }
+</script>
+</body>
+</html>

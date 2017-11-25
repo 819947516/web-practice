@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+        img {
+            position: absolute;
+            padding: 10px 0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+    <script src="jquery1.0.0.1.js"></script>
+    <script>
+        window.onload = function () {
+            var img = document.getElementsByTagName("img")[0];
+            var timer = null;
+            var targetx = 0;
+            var targety = 0;
+            var leaderx = 0;
+            var leadery = 0;
+            document.onclick = function (event) {
+                //新五步
+                //兼容获取事件对象
+                event = event || window.event;
+                //鼠标在页面的位置 = 被卷去的部分+可视区域部分。
+                var pagex = event.pageX || scroll().left + event.clientX;
+                var pagey = event.pageY || scroll().top + event.clientY;
+                //要用定时器，先清定时器
+                targetx = pagex-img.offsetWidth/2;
+                targety = pagey-img.offsetHeight/2;
+
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    leaderx = img.offsetLeft;
+                    var stepx = (targetx-leaderx)/10;
+                    console.log(stepx);
+                    stepx = stepx>0? Math.ceil(stepx):Math.floor(stepx);
+                    img.style.left = img.offsetLeft + stepx + "px";
+                    console.log(targetx);
+                    console.log(targety);
+
+
+                    leadery = img.offsetTop;
+                    var stepy = (targety-leadery)/10;
+                    stepy = stepy>0? Math.ceil(stepy):Math.floor(stepy);
+                    img.style.top = img.offsetTop + stepy + "px";
+
+                    if (Math.abs(stepx)>=Math.abs(targetx-leaderx)&&Math.abs(stepy)>=Math.abs(targety-leadery)){
+                        img.style.left = targetx;
+                        img.style.top = targety;
+                        clearInterval(timer);
+                    }
+
+
+                },30)
+            }
+        }
+    </script>
+</head>
+<body>
+<img src="images/img.jpg" width="100">
+</body>
+</html>

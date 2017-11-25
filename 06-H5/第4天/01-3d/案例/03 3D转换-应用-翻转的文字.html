@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: '微软雅黑';
+            background-color: #F7F7F7;
+        }
+        .text-box {
+            font-size: 100px;
+            margin-top: 100px;
+            text-align: center;
+            /*line-height: 1;*/
+        }
+        .text-box span {
+            /*display: inline-block;*/
+            position: relative;
+        }
+        .text-box span::before,.text-box span::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 1s;
+            transform-origin: left;
+            transform: scale(0.95,1);
+
+        }
+        .text-box span::after {
+            color: #fff;
+            transform: rotateY(-15deg);
+
+        }
+        /*本来before会显示在原来span上面 因为加了透明度，所以让下面的 原来的span显示了出来*/
+        .text-box span::before {
+            color: rgba(0,0,0,0.3);
+        }
+
+        .text-box:hover span::after {
+            transform: rotateY(-30deg);
+        }
+        .text-box:hover span::before {
+            transform: skew(0deg,10deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="text-box">
+        <span data-text="传">传</span>
+        <span data-text="智">智</span>
+        <span data-text="播">播</span>
+        <span data-text="客">客</span>
+    </div>
+</body>
+</html>

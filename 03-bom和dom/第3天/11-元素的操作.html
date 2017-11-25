@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>chuanjian</button>
+<ul>
+    <li>我是参照标签li</li>
+</ul>
+<script>
+    document.write("<li>我是document.write创建</li>");
+    var btn = document.getElementsByTagName("button")[0];
+    var ul = document.getElementsByTagName("ul")[0];
+    //会替换之前的标签；
+//        btn.onclick = function () {
+//            document.write("<li>我是document.write创建的</li>");
+//        }
+    ul.innerHTML += "<li id='id'>我是inner</li>";
+    var liid = document.getElementById("id");
+    var newLi = document.createElement("li");
+
+    newLi.innerHTML = "我是Create用appendchild";
+    ul.appendChild(newLi);//加在最后
+    var li2 = document.createElement("li");
+
+    li2.innerHTML = "我是Create用insertbefore";
+    ul.insertBefore(li2,liid);
+
+    //克隆
+    for(var i=0;i<3;i++){
+        var li4 = liid.cloneNode(true);
+        ul.appendChild(li4);
+    }
+//    ul.removeChild(newLi);删除
+//    ul.replaceChild(li2,newLi); //父节点.replaceChild(newNode,oldNode);
+
+</script>
+</body>
+</html>

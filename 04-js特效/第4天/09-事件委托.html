@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            background-color: #07fff6;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button>添加</button>
+    <ul>
+        <li>我是原生li</li>
+        <a href="#">a标签</a>
+        <li>我是原生li</li>
+        <a href="#">a标签</a>
+        <li>我是原生li</li>
+    </ul>
+    <script>
+        var ul =  document.getElementsByTagName("ul")[0];
+        var btn = document.getElementsByTagName("button")[0];
+        var liArr = ul.getElementsByTagName("li");
+//        for(var i=0;i<liArr.length;i++){
+//            liArr[i].onclick = function () {
+//                alert("我是li");
+//            } btn添加的LI不能绑定点击事件；
+        //事件委托
+        ul.onclick = function (event) {
+            event = event || window.event;
+            var aaa = event.target || event.srcElement;
+            if (aaa.tagName === "LI"){
+            alert("我是li");
+            }
+        }
+        btn.onclick = function () {
+            var newLi = document.createElement("li");
+            newLi.innerHTML = "我是LI";
+            ul.appendChild(newLi);
+        }
+    </script>
+</body>
+</html>

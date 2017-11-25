@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var n1 = 1;
+    var n2 = 1;
+    for(var i = 3;i<=12;i++){
+        var temp = n2;
+        n2 = n1 + n2;
+        n1 = temp;
+    }
+    alert(n2);
+</script>
+</body>
+</html>

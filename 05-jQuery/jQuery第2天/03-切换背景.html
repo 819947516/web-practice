@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: deeppink;
+        }
+        .current {
+            background: #07fff6;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+//            $("button").click(function () {
+//                if ($("div").hasClass("current")){
+//                    $("div").removeClass("current");
+//                }else{
+//                    $("div").addClass("current");
+//                }
+//            })
+            $("button").click(function () {
+                $("div").toggleClass("current");
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>切换</button>
+    <div></div>
+</body>
+</html>

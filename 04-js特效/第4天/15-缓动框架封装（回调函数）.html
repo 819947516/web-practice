@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: deeppink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button>运动</button>
+    <!--<button>变宽到400</button>-->
+    <div></div>
+    <script src="jquery1.0.0.1.js"></script>
+    <script>
+        var btn = document.getElementsByTagName("button");
+        var div = document.getElementsByTagName("div")[0];
+        btn[0].onclick = function () {
+            var json1 = {"top":100,"left":300,"width":500,"height":300};
+            var json2 = {"top":10,"left":30,"width":50,"height":30};
+            animate(div,json1,function () {
+                animate(div,json2)
+            });
+        }
+//        btn[1].onclick =function () {
+//            animate(div,"width",400);
+//        }
+        function animate(ele,json,fn) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var bool = true;
+                for (var k in json){
+                   var leader =parseInt(getStyle(ele,k)) || 0;
+                   var step = (json[k] - leader)/10;
+                   step = step>0?Math.ceil(step):Math.floor(step);
+
+    //               ele.style[attr] = leader + step + "px";
+                    leader = leader + step ;
+                    ele.style[k] = leader + "px";
+                    console.log(1);
+//                    if (Math.abs(step)>=Math.abs(json[k] - leader)){
+//                        ele.style[k] = json[k] + "px";
+//                        clearInterval(ele.timer);
+//                    }
+//                    if (json[k] !== leader){
+//                        bool = false;
+//                    }
+                    if (Math.abs(step)<Math.abs(json[k]-leader)){
+                        bool = false;
+                    }
+                }
+                if (bool){
+                    for (var k in json){
+                        ele.style[k] = json[k] + "px";
+                    }
+                    clearInterval(ele.timer);
+                    if(fn){
+                        fn();
+                    }
+                }
+
+            },30)
+        }
+//        var aaa = getStyle(div,"left");
+//        console.log(aaa);
+//        console.log(parseInt(aaa))
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span::before,span::after {
+            content: '早上好';
+            display: block;
+            width: 100px;
+            height: 50px;
+            color: red;
+            background-color: pink;
+            text-align: center;
+            font-size: 20px;
+            line-height: 50px;
+        }
+        span::after {
+            content: '下午好';
+        }
+    </style>
+</head>
+<body>
+    <span>中午好</span>
+</body>
+</html>

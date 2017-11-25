@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <button>赋值</button>
+    <button>取值</button>
+    <script>
+        var inpArr = document.getElementsByTagName("input");
+        var btnArr = document.getElementsByTagName("button");
+        btnArr[0].onclick = function () {
+            for(var i=0;i<inpArr.length;i++){
+                inpArr[i].value = i;
+            }
+        }
+        btnArr[1].onclick = function () {
+            var newArr = [];
+            for(var i=0;i<inpArr.length;i++){
+                newArr[i]=inpArr[i].value;
+            }
+            console.log(newArr);
+        }
+    </script>
+</body>
+</html>

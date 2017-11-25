@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//    for (var i = 0; i < 10; i++) {
+//        console.log(i);
+//    }
+
+    for (var i = 0; i < 10; i++){
+        setTimeout(function () {
+           console.log(i);
+        },0)
+    }
+
+    for (var i=0;i<10;i++){
+        function fff(j) {
+            console.log(j);
+        }
+        fff(i);
+    }
+
+//    for (var i=0; i<10;i++){
+//        setTimeout((function (j) {
+//            return function () {
+//                console.log(j);
+//            }
+//        })(i),0)
+//    }
+//
+//
+//    for (var i = 0; i < 10; i++){
+//        function foo(j) {
+//            return function () {
+//                console.log(j);//每次输出i先存好；
+//            }
+//        }
+//        var f = foo(i);
+//        setTimeout(f,1000)
+//    }
+</script>
+</body>
+</html>

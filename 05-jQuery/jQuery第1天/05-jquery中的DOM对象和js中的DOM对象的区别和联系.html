@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var box1 = document.getElementsByTagName("div");
+            var box2 = document.getElementById("box");
+            var box3 = document.getElementsByClassName("box");
+
+            var jqbox1 = $("div");
+            var jqbox2 = $("#box");
+            var jqbox3 = $(".box");
+
+
+            console.log(box1);
+            console.log(jqbox1);
+            console.log("----------");
+            console.log(box2);
+            console.log(jqbox2);
+            console.log("----------");
+            console.log(box3);
+            console.log(jqbox3);
+        })
+    </script>
+</head>
+<body>
+    <div></div>
+    <div class="box"></div>
+    <div id="box"></div>
+    <div class="box"></div>
+    <div></div>
+</body>
+</html>

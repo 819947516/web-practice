@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #42f6ff;
+            position: absolute;
+            left: 400px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var div = document.getElementsByTagName("div")[0];
+            var btn = document.getElementsByTagName("button")[0];
+            var timer = null;
+            btn.onclick = function () {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    var target = 0;
+                    var step = (target - div.offsetLeft)/10;
+                    step = step>0?Math.ceil(step):Math.floor(step);
+                    div.style.left = div.offsetLeft + step + "px";
+                    console.log(1);
+                    if (Math.abs(step)>=Math.abs(target - div.offsetLeft)){
+                        div.style.left = target + "px";
+                        clearInterval(timer);
+                    }
+                },30);
+            }
+        }
+    </script>
+</head>
+<body>
+    <button>移动到400</button>
+    <div></div>
+</body>
+</html>

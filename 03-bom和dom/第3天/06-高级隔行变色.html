@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            text-align: center;
+            width: 500px;
+            margin: 100px auto;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0px;
+            border: 1px solid #c0c0c0;
+            width: 500px;
+        }
+        th,td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+        td {
+            font: 14px "微软雅黑";
+        }
+        tbody tr {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .current {
+            background-color: red!important;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <table>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>课程</th>
+                <th>成绩</th>
+            </tr>
+            </thead>
+            <tbody id="target">
+            <tr>
+                <td>1</td>
+                <td>李李</td>
+                <td>语文</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>李李</td>
+                <td>语文</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>李李</td>
+                <td>语文</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>李李</td>
+                <td>语文</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>李李</td>
+                <td>语文</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>李李</td>
+                <td>语文</td>
+                <td>100</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+    var tbody = document.getElementsByTagName("tbody")[0];
+    var trArr = tbody.children;
+    for (var i=0;i<trArr.length;i++){
+        if (i%2!==0){
+            trArr[i].style.backgroundColor = "#a3a3a3";
+        }else{
+            trArr[i].style.backgroundColor = "#ccc";
+        }
+        //计数器 先记录好原来颜色 离开后返还给他自己。
+        var color = "";
+        trArr[i].onmouseover = function () {
+            color = this.style.backgroundColor;
+            this.style.backgroundColor = "#fff";
+        }
+        trArr[i].onmouseout = function () {
+            this.style.backgroundColor = color;
+        }
+    }
+    </script>
+</body>
+</html>

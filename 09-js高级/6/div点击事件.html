@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 120px;
+            height: 40px;
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var divs = document.getElementsByTagName("div");
+            for (var i = 0; i<divs.length; i++){
+//                divs[i].onclick = function () {
+//                    alert("i am "+i+"");
+//                }
+
+
+//
+//                function foo(j) {
+//                    return function () {
+//                        alert("i am "+(j+1)+"");
+//                    }
+//                }
+//                var f = foo(i);
+//                divs[i].onclick = f;
+
+                divs[i].onclick =(function (j) {
+                                        return function () {
+                                            alert("i am "+(j+1)+"");
+                                        }
+                                })(i);
+            }
+
+            (function () {
+                console.log("www");
+                var a =111;
+            })();
+
+
+        }
+
+    </script>
+</head>
+<body>
+<div>我是第1个div</div>
+<div>我是第2个div</div>
+<div>我是第3个div</div>
+<div>我是第4个div</div>
+<div>我是第5个div</div>
+<div>我是第6个div</div>
+<div>我是第7个div</div>
+<div>我是第8个div</div>
+<div>我是第9个div</div>
+<div>我是第10个div</div>
+</body>
+</html>

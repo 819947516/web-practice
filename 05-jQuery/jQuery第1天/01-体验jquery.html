@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            height: 100px;
+            background-color: pink;
+            margin: 10px;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+//        //原生js
+//        window.onload = function () {
+//            var btn = document.getElementsByTagName("button")[0];
+//            var divArr = document.getElementsByTagName("div");
+//            btn.onclick = function () {
+//                for (var i=0;i<divArr.length;i++){
+//                    divArr[i].style.display = "block";
+//                    divArr[i].innerHTML = "快乐";
+//                }
+//            }
+//        }
+//jQuery
+        $(document).ready(function () {
+            var jQbtn = $("button");
+            var div = $("div");
+            jQbtn.click(function () {
+                div.show(1000).html("快乐");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>显示盒子和设置内容</button>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 30px;
+            border: 5px solid pink;
+            margin-top: 5px;
+        }
+        p {
+            width: 100px;
+            height: 30px;
+            border: 5px solid pink;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<script>
+    arr = [2,23,233,2323,33,444,5235,2132];
+    var a =Math.max.apply(null,arr);
+
+
+    var divs = document.getElementsByTagName("div");
+    var ps = document.getElementsByTagName("p");
+    var arr = [];
+    arr = arr.concat.apply(arr,divs);
+    arr = arr.concat.apply(arr,ps);
+    console.log(arr);
+    for (var i = 0; i < arr.length; i++) {
+        var ele = arr[i];
+        ele.style.backgroundColor = "yellow";
+    }
+</script>
+</body>
+</html>
